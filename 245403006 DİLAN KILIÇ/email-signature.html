@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechNova E-posta İmzası</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f5f5;
+            padding: 20px;
+        }
+        
+        .email-signature {
+            max-width: 600px;
+            background: linear-gradient(135deg, #001a33 0%, #003d66 100%);
+            border-radius: 12px;
+            padding: 30px;
+            color: #fff;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .signature-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid rgba(6, 182, 212, 0.3);
+        }
+        
+        .logo-box {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #06B6D4 0%, #0891b2 100%);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 24px;
+            color: #001a33;
+            flex-shrink: 0;
+        }
+        
+        .company-info {
+            flex: 1;
+        }
+        
+        .company-name {
+            font-size: 18px;
+            font-weight: 700;
+            color: #06B6D4;
+            margin-bottom: 2px;
+            letter-spacing: 0.5px;
+        }
+        
+        .company-tagline {
+            font-size: 11px;
+            color: #fbbf24;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        
+        .contact-section {
+            margin-bottom: 20px;
+        }
+        
+        .contact-title {
+            font-size: 12px;
+            color: #fbbf24;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+            letter-spacing: 1px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 8px;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+        
+        .contact-icon {
+            width: 18px;
+            height: 18px;
+            background-color: rgba(6, 182, 212, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+            color: #06B6D4;
+            flex-shrink: 0;
+        }
+        
+        .contact-label {
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.8);
+            min-width: 60px;
+        }
+        
+        .contact-value {
+            color: rgba(255, 255, 255, 0.9);
+        }
+        
+        .contact-value a {
+            color: #06B6D4;
+            text-decoration: none;
+        }
+        
+        .contact-value a:hover {
+            text-decoration: underline;
+        }
+        
+        .social-section {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 2px solid rgba(6, 182, 212, 0.3);
+        }
+        
+        .social-title {
+            font-size: 11px;
+            color: #fbbf24;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+            letter-spacing: 1px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        
+        .social-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .social-linkedin {
+            background-color: #0077B5;
+            color: white;
+        }
+        
+        .social-twitter {
+            background-color: #1DA1F2;
+            color: white;
+        }
+        
+        .social-instagram {
+            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+            color: white;
+        }
+        
+        .social-facebook {
+            background-color: #1877F2;
+            color: white;
+        }
+        
+        .social-youtube {
+            background-color: #FF0000;
+            color: white;
+        }
+        
+        .social-icon:hover {
+            transform: scale(1.1);
+            box-shadow: 0 4px 12px rgba(6, 182, 212, 0.3);
+        }
+        
+        .divider {
+            display: flex;
+            gap: 12px;
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px solid rgba(6, 182, 212, 0.2);
+        }
+        
+        .feature-box {
+            flex: 1;
+            text-align: center;
+            padding: 10px;
+            background-color: rgba(6, 182, 212, 0.1);
+            border-radius: 6px;
+            border-left: 2px solid #06B6D4;
+        }
+        
+        .feature-icon {
+            font-size: 16px;
+            color: #06B6D4;
+            margin-bottom: 4px;
+        }
+        
+        .feature-text {
+            font-size: 10px;
+            color: rgba(255, 255, 255, 0.8);
+            font-weight: 600;
+            line-height: 1.4;
+        }
+        
+        .disclaimer {
+            font-size: 9px;
+            color: rgba(255, 255, 255, 0.6);
+            margin-top: 15px;
+            padding-top: 10px;
+            border-top: 1px solid rgba(6, 182, 212, 0.2);
+            text-align: center;
+        }
+        
+        /* Preview styles */
+        .preview-container {
+            margin-bottom: 30px;
+        }
+        
+        .preview-label {
+            font-size: 12px;
+            color: #666;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        
+        .copy-button {
+            background-color: #06B6D4;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+        
+        .copy-button:hover {
+            background-color: #0891b2;
+            box-shadow: 0 4px 12px rgba(6, 182, 212, 0.3);
+        }
+        
+        @media (max-width: 480px) {
+            .email-signature {
+                padding: 20px;
+            }
+            
+            .signature-header {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .contact-item {
+                justify-content: center;
+            }
+            
+            .divider {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="preview-container">
+        <div class="preview-label">📧 E-posta İmzası Önizlemesi (Kopyalamak için aşağıdaki butona tıklayın)</div>
+        <button class="copy-button" onclick="copySignature()">📋 İmzayı Kopyala</button>
+    </div>
+
+    <div class="email-signature" id="signature">
+        <!-- BAŞLIK BÖLÜMÜ -->
+        <div class="signature-header">
+            <div class="logo-box">TN</div>
+            <div class="company-info">
+                <div class="company-name">TechNova</div>
+                <div class="company-tagline">Kodun Ötesinde, Geleceğin İçinde</div>
+            </div>
+        </div>
+
+        <!-- İLETİŞİM BÖLÜMÜ -->
+        <div class="contact-section">
+            <div class="contact-title">İLETİŞİM</div>
+            <div class="contact-item">
+                <div class="contact-icon">📧</div>
+                <div class="contact-label">E-posta:</div>
+                <div class="contact-value"><a href="mailto:info@technova.com.tr">info@technova.com.tr</a></div>
+            </div>
+            <div class="contact-item">
+                <div class="contact-icon">📱</div>
+                <div class="contact-label">Telefon:</div>
+                <div class="contact-value"><a href="tel:+902125550011">+90 (212) 555 00 11</a></div>
+            </div>
+            <div class="contact-item">
+                <div class="contact-icon">📍</div>
+                <div class="contact-label">Adres:</div>
+                <div class="contact-value">Levent, İstanbul, Türkiye</div>
+            </div>
+            <div class="contact-item">
+                <div class="contact-icon">🌐</div>
+                <div class="contact-label">Web:</div>
+                <div class="contact-value"><a href="https://www.technova.com.tr">www.technova.com.tr</a></div>
+            </div>
+        </div>
+
+        <!-- SOSYAL MEDYA BÖLÜMÜ -->
+        <div class="social-section">
+            <div class="social-title">SOSYAL MEDYA</div>
+            <div class="social-links">
+                <a href="https://linkedin.com/company/technova" class="social-icon social-linkedin" title="LinkedIn">in</a>
+                <a href="https://twitter.com/technova" class="social-icon social-twitter" title="Twitter">𝕏</a>
+                <a href="https://instagram.com/technova" class="social-icon social-instagram" title="Instagram">📷</a>
+                <a href="https://facebook.com/technova" class="social-icon social-facebook" title="Facebook">f</a>
+                <a href="https://youtube.com/@technova" class="social-icon social-youtube" title="YouTube">▶</a>
+            </div>
+        </div>
+
+        <!-- ÖZELLİKLER BÖLÜMÜ -->
+        <div class="divider">
+            <div class="feature-box">
+                <div class="feature-icon">🛡️</div>
+                <div class="feature-text">GÜVENLİ<br>ÇÖZÜMLER</div>
+            </div>
+            <div class="feature-box">
+                <div class="feature-icon">💡</div>
+                <div class="feature-text">YENİLİKÇİ<br>YAKLAŞIM</div>
+            </div>
+            <div class="feature-box">
+                <div class="feature-icon">📈</div>
+                <div class="feature-text">SÜRDÜRÜLEBILIR<br>BÜYÜME</div>
+            </div>
+        </div>
+
+        <!-- YASAL METIN -->
+        <div class="disclaimer">
+            Bu e-posta ve ekleri gizlidir ve sadece adresi belirtilen kişi(ler) tarafından görülmesi hedeflenmiştir.<br>
+            © <?php echo date('Y'); ?> TechNova Yazılım A.Ş. Tüm hakları saklıdır.
+        </div>
+    </div>
+
+    <script>
+        function copySignature() {
+            const signature = document.getElementById('signature');
+            const range = document.createRange();
+            range.selectNodeContents(signature);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            
+            try {
+                document.execCommand('copy');
+                alert('✅ E-posta imzası başarıyla kopyalandı! E-posta istemcinize yapıştırabilirsiniz.');
+            } catch (err) {
+                alert('❌ Kopyalama başarısız oldu. Lütfen manuel olarak seçip kopyalayın.');
+            }
+            
+            selection.removeAllRanges();
+        }
+    </script>
+</body>
+</html>

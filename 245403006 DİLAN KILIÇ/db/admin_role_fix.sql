@@ -1,0 +1,1 @@
+UPDATE kullanicilar SET rol = 'admin' WHERE email = 'admin@technova.com.tr';
